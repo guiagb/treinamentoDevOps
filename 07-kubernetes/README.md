@@ -8,7 +8,7 @@ kubectl run didox-nginx --image=nginx:latest
 # Lista o pod e mostra o IP local
 kubectl get pods -o wide 
 
-# Acompanha em modo watch a criação do pod
+# Acompanha em modo watch a criação do od
 kubectl get pods --watch 
 
 # Apaga o pop criado
