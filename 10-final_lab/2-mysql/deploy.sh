@@ -23,6 +23,15 @@ $ID_M1_DNS
 $ID_M2_DNS
 [ec2-ec2-m3]
 $ID_M3_DNS
+"
+
+echo "
+[ec2-ec2-m1]
+$ID_M1_DNS
+[ec2-ec2-m2]
+$ID_M2_DNS
+[ec2-ec2-m3]
+$ID_M3_DNS
 " > ../1-ansible/hosts
 
 # cd 10-final_lab/01-pipeline_infra/2-mysql/1-ansible
