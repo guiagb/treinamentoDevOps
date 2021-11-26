@@ -44,7 +44,7 @@ resource "aws_security_group" "acessos_g4_mysql" {
       cidr_blocks      = ["0.0.0.0/0"]
       ipv6_cidr_blocks = ["::/0"]
       prefix_list_ids  = null,
-      security_groups : ["sg-0d9f50d44b291867b"], 
+      security_groups : ["sg-02e5aee767b3a333a"], 
       self : null
     },
     {
