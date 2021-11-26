@@ -56,7 +56,7 @@ npx yaml-lint yamllint pod.yml
 # $ kubectl get pod -o yaml > teste.yml # exportando yaml do pod do kubernets
 
 
-# $ kubectl apply -f deployment-site.yaml
+# $ ctl apply -f deployment-site.yaml
 # $ kubectl delete -f deployment-site.yaml
 # $ kubectl get deployment
 # $ kubectl describe deployment site-deployment
