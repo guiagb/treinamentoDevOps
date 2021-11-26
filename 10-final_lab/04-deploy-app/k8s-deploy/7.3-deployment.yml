@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
         - name: container-pod-javadb
-          image: julianodocker1234/crud-java-login:v0.1.3
+          image: guilhermeagb/crud-java-login:v0.1.3
           env:
             - name: USER
               valueFrom:
