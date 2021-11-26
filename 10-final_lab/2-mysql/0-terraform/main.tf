@@ -12,15 +12,15 @@ resource "aws_instance" "ec2_g4_myslq" {
     encrypted = true
     volume_size = 8
   }
-  count         = 1
+  count = 3
   tags = {
-    Name = "ec2_g4_mysql-${count.index}-leandsu"
+   Name = "ec2_g4_mysql-${var.mysql_ambientes[count.index]}"
   }
   vpc_security_group_ids = [aws_security_group.acessos_g4_mysql.id]
 }
 
 resource "aws_security_group" "acessos_g4_mysql" {
-  # name        = "acessos_mysql-leandsu"
+  # name        = "acessos_mysql"
   description = "acessos_mysql inbound traffic"
   vpc_id      = var.my_vpc_id
 
@@ -47,6 +47,18 @@ resource "aws_security_group" "acessos_g4_mysql" {
       security_groups : null,
       self : null
     },
+    {
+      description      = "SSH from VPC"
+      from_port        = 22
+      to_port          = 22
+      protocol         = "tcp"
+      cidr_blocks      = ["0.0.0.0/0"]
+      ipv6_cidr_blocks = ["::/0"]
+      prefix_list_ids  = null,
+      security_groups = ["sg-0d70d00e5b267d58c"],
+      self : null
+    },
+
   ]
 
   egress = [
@@ -64,7 +76,7 @@ resource "aws_security_group" "acessos_g4_mysql" {
   ]
 
   tags = {
-    Name = "allow-mysql-leandsu"
+    Name = "allow-mysql"
   }
 }
 
