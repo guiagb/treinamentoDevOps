@@ -33,17 +33,6 @@ resource "aws_security_group" "acessos_g4_mysql" {
       cidr_blocks      = ["0.0.0.0/0"]
       ipv6_cidr_blocks = ["::/0"]
       prefix_list_ids  = null,
-      security_groups : null,
-      self : null
-    },
-    {
-      description      = "SSH from Jenkins"
-      from_port        = 22
-      to_port          = 22
-      protocol         = "tcp"
-      cidr_blocks      = ["0.0.0.0/0"]
-      ipv6_cidr_blocks = ["::/0"]
-      prefix_list_ids  = null,
       security_groups : ["sg-02e5aee767b3a333a"], 
       self : null
     },
