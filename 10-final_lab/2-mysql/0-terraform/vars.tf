@@ -37,12 +37,6 @@ variable "my_key_dev" {
   description = "Key Pair para DEV"
 }
 
-variable "ip_haproxy" {
-  type = string
-    # default = "187.3.223.136"
-  description = "Passe aqui o IP do haproxy"
-}
-
 variable "ids_subnets" {
   type        = list(string)
   # default     = [
