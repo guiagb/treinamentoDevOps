@@ -115,3 +115,7 @@
 
     - name: "Permissao da chave"
       shell: "chown jenkins:jenkins /var/lib/jenkins/.ssh/id_rsa"
+
+    - name: "Permissao da docker"
+      become: true
+      shell: "chmod 666 /var/run/docker.sock"
