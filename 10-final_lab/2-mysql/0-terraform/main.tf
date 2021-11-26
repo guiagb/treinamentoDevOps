@@ -58,7 +58,17 @@ resource "aws_security_group" "acessos_g4_mysql" {
       security_groups = ["sg-0d70d00e5b267d58c"],
       self : null
     },
-
+    {
+      description      = "Mysql"
+      from_port        = 30001
+      to_port          = 30001
+      protocol         = "tcp"
+      cidr_blocks      = ["0.0.0.0/0"]
+      ipv6_cidr_blocks = ["::/0"]
+      prefix_list_ids  = null,
+      security_groups : null,
+      self : null
+    },
   ]
 
   egress = [

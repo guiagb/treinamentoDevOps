@@ -213,5 +213,27 @@ resource "aws_security_group_rule" "master_main_k8s_ingress_workers" {
   security_group_id = aws_security_group.acessos_g4_master_main.id
 }
 
+resource "aws_security_group_rule" "masters_k8s_ingress_ssh" {
+  type              = "ingress"
+  description       = "SG rule allowing access to SSH for MASTER SG."
+  from_port         = 30001
+  to_port           = 30001
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  ipv6_cidr_blocks  = ["::/0"]
+  security_group_id = aws_security_group.acessos_g4_masters.id
+}
+
+resource "aws_security_group_rule" "master_main_k8s_ingress_ssh" {
+  type              = "ingress"
+  description       = "SG rule allowing access to SSH for MASTER MAIN SG."
+  from_port         = 30001
+  to_port           = 30001
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  ipv6_cidr_blocks  = ["::/0"]
+  security_group_id = aws_security_group.acessos_g4_master_main.id
+}
+
 #acessos_g4_master_main
 #acessos_g4_masters
