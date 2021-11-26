@@ -171,8 +171,8 @@ cat <<EOF > 2-provisionar-k8s-master-auto-shell.yml
   become: yes
   tasks:
     - name: "Configura weavenet para reconhecer os nós master e workers"
-      shell: kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
-      
+      shell: kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=\$(kubectl version | base64 | tr -d '\n')"
+
     - name: Espera 30 segundos
       wait_for: timeout=30
 
