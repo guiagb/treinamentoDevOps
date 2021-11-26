@@ -12,9 +12,9 @@ resource "aws_instance" "ec2_g4_myslq" {
     encrypted = true
     volume_size = 8
   }
-  count = 3
+  count         = 3
   tags = {
-   Name = "ec2_g4_mysql-${var.mysql_ambientes[count.index]}"
+    Name = "ec2_g4_mysql-${var.tipo_ambiente[count.index]}"
   }
   vpc_security_group_ids = [aws_security_group.acessos_g4_mysql.id]
 }
@@ -36,32 +36,21 @@ resource "aws_security_group" "acessos_g4_mysql" {
       security_groups : null,
       self : null
     },
-    {
-      description      = "MySQL from VPC"
-      from_port        = 3306
-      to_port          = 3306
-      protocol         = "tcp"
-      cidr_blocks      = ["0.0.0.0/0"]
-      ipv6_cidr_blocks = ["::/0"]
-      prefix_list_ids  = null,
-      security_groups : null,
-      self : null
-    },
-    {
-      description      = "SSH from VPC"
+        {
+      description      = "SSH from Jenkins"
       from_port        = 22
       to_port          = 22
       protocol         = "tcp"
       cidr_blocks      = ["0.0.0.0/0"]
       ipv6_cidr_blocks = ["::/0"]
       prefix_list_ids  = null,
-      security_groups = ["sg-0d70d00e5b267d58c"],
+      security_groups : ["sg-0d9f50d44b291867b"], 
       self : null
     },
     {
-      description      = "Mysql"
-      from_port        = 30001
-      to_port          = 30001
+      description      = "MySQL from VPC"
+      from_port        = 3306
+      to_port          = 3306
       protocol         = "tcp"
       cidr_blocks      = ["0.0.0.0/0"]
       ipv6_cidr_blocks = ["::/0"]
@@ -86,7 +75,7 @@ resource "aws_security_group" "acessos_g4_mysql" {
   ]
 
   tags = {
-    Name = "allow-mysql"
+    Name = "allow-mysql-g4"
   }
 }
 

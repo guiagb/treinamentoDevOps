@@ -34,7 +34,7 @@
     - name: Adicionar DATABASE_URL no bashrc
       lineinfile: dest=~/.bashrc line='export DATABASE_URL="mysql://localhost:3306/{{ lookup('env', 'DATABASE') }}?useTimezone=true&serverTimezone=UTC"' state=present
 
-    - name: Adicionar DATABASE no bashrc
+    - name: Adicionar DATABASE_URL no bashrc
       lineinfile: dest=~/.bashrc line='export DATABASE={{ lookup('env', 'DATABASE') }}' state=present
 
     - name: Captura da variável de ambiente
@@ -54,6 +54,12 @@
       args:
         executable: /bin/bash
 
+    - name: "Trocando mysqld.cnf"
+      copy:
+        src:  "sql/mysqld.cnf"
+        dest: "/etc/mysql/mysql.conf.d/mysqld.cnf"
+      become: yes
+      
     - name: "Lavanta serviço do mysql"
       become: yes
       service:

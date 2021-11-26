@@ -70,6 +70,14 @@ variable "tipo_worker" {
   # ]
 }
 
+variable "tipo_ambiente" {
+  type        = list(string)
+  # default     = [
+  #   "t2.medium",
+  #   "t3.medium",
+  #   "t2.medium"
+  # ]
+}
 # variable "sg_front_object" {
 #   description = "Security group data for Frontend in Kubernetes environment."
 #   type = object({
@@ -149,12 +157,3 @@ variable "tipo_worker" {
 #       public_ip = bool
 #   })
 # }
-variable "mysql_ambientes" {
-  type        = list(string)
-  default     = [
-     "DEV",
-     "STAGE",
-     "PROD"
-   ]
-}
-
